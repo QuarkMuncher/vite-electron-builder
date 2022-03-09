@@ -1,1 +1,2 @@
 - [ ] Understand how tests work.
+- [ ] Figure out how to translate index.tsx to react code.
