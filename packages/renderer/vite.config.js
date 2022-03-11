@@ -4,6 +4,7 @@ import {chrome} from '../../.electron-vendors.cache.json';
 import {join} from 'path';
 import {builtinModules} from 'module';
 import react from '@vitejs/plugin-react';
+import svgrPlugin from 'vite-plugin-svgr';
 
 const PACKAGE_ROOT = __dirname;
 
@@ -19,7 +20,14 @@ const config = {
       '/@/': join(PACKAGE_ROOT, 'src') + '/',
     },
   },
-  plugins: [react()],
+  plugins: [
+    react(),
+    svgrPlugin({
+      svgrOptions: {
+        icon: true,
+      },
+    }),
+  ],
   base: '',
   server: {
     fs: {

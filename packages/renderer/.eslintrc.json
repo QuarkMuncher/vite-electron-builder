@@ -4,6 +4,9 @@
     "node": false
   },
   "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
   ],
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
