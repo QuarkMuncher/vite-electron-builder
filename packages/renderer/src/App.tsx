@@ -1,38 +1,49 @@
+import {
+  ChakraProvider,
+  Accordion,
+  HStack,
+  VStack,
+  Link,
+  Text,
+  Image
+} from '@chakra-ui/react'
+import { ExternalLinkIcon } from '@chakra-ui/icons'
 import logo from '../assets/logo.svg'
 import ReactiveCounter from './components/ReactiveCounter'
 import ReactiveHash from './components/ReactiveHash'
 import ElectronVersions from './components/ElectronVersions'
+import { InfoBox } from './components/molecules'
 
 export default function App() {
   return (
-    <>
-      <img src={logo} alt="" width="150" />
+    <ChakraProvider>
+      <VStack align="stretch" p="2">
+        <HStack justify="center">
+          <Image src={logo} alt="" boxSize="sm" />
+        </HStack>
 
-      <p>
-        For a guide and recipes on how to configure / customize this project,
-        check out the{' '}
-        <a
-          href="https://gtihub.com/QuarkMuncher/vite-electron-builder"
-          target="_blank"
-        >
-          vite-electron-builder documentation
-        </a>
-      </p>
-
-      <fieldset>
-        <legend>Test React Reactivity</legend>
-        <ReactiveCounter />
-      </fieldset>
-
-      <fieldset>
-        <legend>Test Node.js API</legend>
-        <ReactiveHash />
-      </fieldset>
-
-      <fieldset>
-        <legend>Environment</legend>
-        <ElectronVersions />
-      </fieldset>
-    </>
+        <Text>
+          For a guide and recipes on how to configure / customize this project,
+          check out the{' '}
+          <Link
+            href="https://gtihub.com/QuarkMuncher/vite-electron-builder"
+            isExternal
+          >
+            vite-electron-builder documentation <ExternalLinkIcon mx="2px" />
+          </Link>
+        </Text>
+        <Accordion allowToggle>
+          <InfoBox title="Test React Reactivity">
+            <ReactiveCounter />
+          </InfoBox>
+          <InfoBox title="Test Node.js API">
+            <ReactiveHash />
+          </InfoBox>
+          <InfoBox title="Environment">
+            <ElectronVersions />
+          </InfoBox>
+        </Accordion>
+      </VStack>
+    </ChakraProvider>
   )
 }
